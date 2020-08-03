@@ -1,0 +1,419 @@
+﻿<Window x:Class="CMS.View.User.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CMS"
+        mc:Ignorable="d"
+        Title="Home"
+        Height="600"
+        Width="1024"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        MouseDown="Window_MouseDown">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Grid.Column="0">
+            <Grid Height="50"
+                  Background="#FF00A7C3">
+                <Button x:Name="button"
+                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                        Content="BÀN"
+                        HorizontalAlignment="Left"
+                        Margin="13,6,0,-3"
+                        Width="116"
+                        Height="Auto"
+                        Background="#FF007F95"
+                        BorderBrush="Transparent"
+                        Click="button_Click" />
+                <Button x:Name="btn2"
+                        Content="THỰC ĐƠN"
+                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                        HorizontalAlignment="Left"
+                        Margin="132,6,0,-3"
+                        Width="116"
+                        Height="Auto"
+                        Background="#FF00A7C3"
+                        BorderBrush="Transparent"
+                        Click="btn2_Click" />
+                <materialDesign:ColorZone Mode="Standard"
+                                          Padding="8 4 8 4"
+                                          CornerRadius="2"
+                                          Panel.ZIndex="1"
+                                          materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                          Height="40"
+                                          Margin="0,5.965,12.113,0"
+                                          HorizontalAlignment="Right"
+                                          Width="228.086">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="1"
+                                 Margin="8 0 0 0"
+                                 materialDesign:HintAssist.Hint="Nhập sản phẩm cần tìm"
+                                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                 BorderThickness="0"
+                                 MinWidth="200"
+                                 VerticalAlignment="Center"
+                                 x:Name="txtTim" />
+                        <Button Style="{DynamicResource MaterialDesignToolButton}"
+                                Grid.Column="2"
+                                x:Name="btnTim">
+                            <materialDesign:PackIcon Kind="Magnify"
+                                                     Opacity=".56" />
+                        </Button>
+                    </Grid>
+                </materialDesign:ColorZone>
+            </Grid>
+
+            <StackPanel Background="#FF007F95"
+                        Height="550">
+                <StackPanel x:Name="pHome"
+                            Height="540"
+                            Margin="0,5,2,5"
+                            Background="AliceBlue">
+
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Grid.Column="1">
+            <Grid Height="50"
+                  Background="#FF00A7C3">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="10">
+                    <materialDesign:Chip x:Name="name_account"
+                                         ToolTip="Thông tin cá nhân"
+                                         Margin="0,-1,10,-5"
+                                         Foreground="White"
+                                         IconBackground="#FFD69200"
+                                         Height="Auto">
+                        <materialDesign:Chip.Icon>
+                            <materialDesign:PackIcon Kind="Account" />
+                        </materialDesign:Chip.Icon>
+                    </materialDesign:Chip>
+                    <Button Width="30"
+                            Height="30"
+                            Foreground="White"
+                            ToolTip="Xem thông tin"
+                            Background="Transparent"
+                            Padding="0"
+                            BorderBrush="Transparent"
+                            x:Name="btnTT"
+                            Click="btnTT_Click"
+                            Margin="0,1,0,0"
+                            VerticalAlignment="Top">
+                        <materialDesign:PackIcon Kind="AccountEdit"
+                                                 Foreground="White" />
+                    </Button>
+                    <materialDesign:PopupBox Padding="2 0 2 0"
+                                             Foreground="White">
+                        <materialDesign:PopupBox.ToggleContent>
+                            <materialDesign:PackIcon Kind="Settings"
+                                                     Foreground="White" />
+                        </materialDesign:PopupBox.ToggleContent>
+                        <StackPanel>
+                            <Button Content="Thông tin tài khoản" />
+                            <Button Content="Đổi mật khẩu"
+                                    x:Name="btnCĐ"
+                                    Click="btnCĐ_Click" />
+                            <Button Content="Lịch sử thanh toán" />
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                    <Button Width="30"
+                            Height="30"
+                            Foreground="White"
+                            ToolTip="Đăng xuất"
+                            Background="Transparent"
+                            Padding="0"
+                            x:Name="btnĐX"
+                            BorderBrush="Transparent"
+                            Margin="0,0,0,1"
+                            VerticalAlignment="Bottom"
+                            Click="btnĐX_Click">
+                        <materialDesign:PackIcon Kind="Shutdown"
+                                                 Foreground="White" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <StackPanel Height="550"
+                        Background="#FF007F95">
+                <StackPanel Orientation="Vertical"
+                            Height="541"
+                            Margin="2,5,0,5"
+                            Background="AliceBlue">
+                    <StackPanel Height="380"
+                                Orientation="Vertical">
+                        <StackPanel Background="White"
+                                    Height="40"
+                                    Orientation="Horizontal">
+                            <Image Margin="10,5,0,0"
+                                   Height="20"
+                                   Width="20"
+                                   Source="/CMS;component/Assets/bill_70px.png" />
+                            <Label Content="HÓA ĐƠN"
+                                   Margin="0,10,0,3"
+                                   FontWeight="Bold"
+                                   Foreground="#FF00A7C3" />
+                            <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                    Content="Tạo mới"
+                                    x:Name="btnNewBill"
+                                    Background="#FF004CA8"
+                                    Foreground="White"
+                                    BorderBrush="#FF0074FF"
+                                    Margin="245 0 0 0"
+                                    Click="btnNewBill_Click"/>
+                            <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                    Content="Lịch sử"
+                                    x:Name="btnBill"
+                                    Background="Red"
+                                    Foreground="white"
+                                    BorderBrush="Red"
+                                    Margin="5 0 0 0"
+                                    Click="btnBill_Click"/>
+                        </StackPanel>
+                        <StackPanel Height="1"
+                                    Background="Gray"
+                                    Opacity=".4" />
+                        <StackPanel Height="340"
+                                    Orientation="Vertical">
+                            <StackPanel Height="300"
+                                        Width="510">
+                                <ItemsControl x:Name="ListViewBill">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <materialDesign:Card Width="500"
+                                                                 Height="50"
+                                                                 Margin="5">
+                                                <StackPanel VerticalAlignment="Center"
+                                                            Orientation="Horizontal"
+                                                            Margin="10 0">
+                                                    <TextBlock FontWeight="Bold"
+                                                               x:Name="txtName"
+                                                               VerticalAlignment="Center"
+                                                               Width="140"
+                                                               FontSize="13"
+                                                               Text="{Binding name_product}" />
+                                                    <TextBlock FontWeight="Bold"
+                                                               VerticalAlignment="Center"
+                                                               x:Name="txtPrice"
+                                                               Width="50"
+                                                               FontSize="13"
+                                                               TextAlignment="Right"
+                                                               Text="{Binding price}" />
+                                                    <TextBlock Text="VNĐ"
+                                                               VerticalAlignment="Center"
+                                                               FontWeight="Bold"
+                                                               FontSize="13"
+                                                               Margin="5 0 0 0" />
+                                                    <TextBlock FontSize="13"
+                                                               VerticalAlignment="Center"
+                                                               FontWeight="Bold"
+                                                               Text="Số lượng:"
+                                                               Margin="15 0 0 0" />
+                                                    <TextBox Height="25"
+                                                             x:Name="txtNumber"
+                                                             Width="40"
+                                                             Text="{Binding number}"
+                                                             Padding="2 0"
+                                                             FontSize="13"
+                                                             TextAlignment="Right"
+                                                             VerticalAlignment="Center"
+                                                             FontWeight="Bold"
+                                                             TextChanged="txtNumber_TextChanged"
+                                                             />
+                                                    <TextBlock FontWeight="Bold"
+                                                               VerticalAlignment="Center"
+                                                               x:Name="txtMoney"
+                                                               Width="50"
+                                                               FontSize="13"
+                                                               TextAlignment="Right"
+                                                               Text="{Binding total_price}"
+                                                               Margin="15 0 0 0" />
+                                                    <TextBlock Text="VNĐ"
+                                                               VerticalAlignment="Center"
+                                                               FontWeight="Bold"
+                                                               FontSize="13"
+                                                               Margin="5 0 0 0" />
+                                                    <Button Margin="10 0 0 0"
+                                                            Padding="0"
+                                                            Background="Transparent"
+                                                            BorderBrush="Transparent"
+                                                            ToolTip="Hủy"
+                                                            x:Name="btnHuy"
+                                                            Click="btnHuy_Click">
+                                                        <materialDesign:PackIcon Kind="Backspace"
+                                                                                 Height="20"
+                                                                                 Width="20"
+                                                                                 Foreground="Red" />
+                                                    </Button>
+                                                </StackPanel>
+                                            </materialDesign:Card>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Bottom"
+                                        Height="40"
+                                        HorizontalAlignment="Right"
+                                        Orientation="Horizontal"
+                                        Width="510">
+                                <Label Content="Bàn: "
+                                       FontSize="15"
+                                       FontWeight="Bold"
+                                       Margin="15 5 0 5" />
+                                <TextBox Width="67"
+                                         Padding="2 0"
+                                         Background="White"
+                                         FontSize="15"
+                                         FontWeight="Bold"
+                                         TextAlignment="Right"
+                                         IsReadOnly="True"
+                                         x:Name="txtTable"
+                                         VerticalAlignment="Center"/>
+                                <Label Content="Giảm giá: "
+                                       FontSize="15"
+                                       FontWeight="Bold"
+                                       Margin="35 5 0 5" />
+                                <TextBox x:Name="txtTicker"  
+                                         Width="56"
+                                         Background="White"
+                                         FontSize="15"
+                                         FontWeight="Bold"
+                                         Text="0"
+                                         TextAlignment="Right"
+                                         VerticalAlignment="Center"
+                                         TextChanged="txtTicker_TextChanged"/>
+                                <Label Content="%"
+                                       FontSize="15"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center" />
+                                <TextBlock Margin="30,0,0,0"
+                                           VerticalAlignment="Center"
+                                           FontSize="15"
+                                           FontWeight="Bold"
+                                        Text="Tổng số lượng:"/>
+                                <TextBox x:Name="txtTotalNumber"
+                                         Width="30"
+                                         Margin="5 0 0 0"
+                                         Background="White"
+                                         FontSize="15"
+                                         FontWeight="Bold"
+                                         Text="0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Right"
+                                         VerticalAlignment="Center"
+                                         TextChanged="txtTicker_TextChanged" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Height="1"
+                                Background="Gray"
+                                Opacity=".3" />
+                    <StackPanel Height="159"
+                                Orientation="Horizontal">
+                        <StackPanel Width="200"
+                                    Orientation="Vertical">
+                            <Button Height="60"
+                                    Margin="7 16 5 5"
+                                    Content="THANH TOÁN"
+                                    Background="#1f77b4"
+                                    BorderBrush="Transparent"
+                                    x:Name="txtPay"
+                                    Click="txtPay_Click" />
+                            <Button Height="60"
+                                    Margin="7 5 5 15"
+                                    Content="IN HÓA ĐƠN"
+                                    Background="#2ca02c"
+                                    BorderBrush="Transparent" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0 10 0 0">
+                                <Label Margin="5 0"
+                                       Foreground="Black"
+                                       FontSize="15"
+                                       Content="Tổng tiền:" />
+                                <TextBox x:Name="txtTotalPrice" 
+                                        Width="160"
+                                         Margin="47 0 10 0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Right"
+                                         BorderBrush="Transparent"
+                                         FontSize="16"
+                                         FontWeight="Bold"
+                                         Text="0"
+                                         Background="GhostWhite" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="5">
+                                <Label Margin="0 5 0 0"
+                                       Foreground="Black"
+                                       FontSize="15"
+                                       Content="Khách cần trả:" />
+                                <TextBox x:Name="txtRTotal"
+                                        Width="160"
+                                         Margin="25 0 10 0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Right"
+                                         FontSize="16"
+                                         BorderBrush="Transparent"
+                                         FontWeight="Bold"
+                                         Text="0"
+                                         Foreground="Red"
+                                         Background="GhostWhite" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0 5 0 0">
+                                <Label Margin="5 0"
+                                       Foreground="Black"
+                                       FontSize="15"
+                                       Content="Tiền khách đưa:" />
+                                <TextBox Width="160"
+                                         Margin="10 0 10 0"
+                                         TextAlignment="Right"
+                                         FontSize="16"
+                                         FontWeight="Bold"
+                                         Text="0"
+                                         Background="GhostWhite"
+                                         BorderBrush="Transparent"
+                                         x:Name="txtMoney"
+                                         TextChanged="txtMoney_TextChanged"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0 5 0 0">
+                                <Label Margin="5 0"
+                                       Foreground="Black"
+                                       FontSize="15"
+                                       Content="Tiền thừa:" />
+                                <TextBox Width="160"
+                                         BorderBrush="Transparent"
+                                         IsReadOnly="True"
+                                         Margin="50 0 10 0"
+                                         Background="GhostWhite"
+                                         TextAlignment="Right"
+                                         FontSize="16"
+                                         FontWeight="Bold"
+                                         Text="0"
+                                         HorizontalAlignment="Right" 
+                                         x:Name="txtExcess"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

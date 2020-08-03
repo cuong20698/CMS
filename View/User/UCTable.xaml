@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="CMS.View.User.UCTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:CMS.View.User"
+             mc:Ignorable="d"
+             Height="540"
+             Width="510">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0"
+                        Background="White"
+                        Orientation="Horizontal"
+                        Height="40">
+                <Image Margin="10,5,0,0"
+                       Height="20"
+                       Width="20"
+                       Source="/CMS;component/Assets/menu_70px.png"></Image>
+                <Label Content="DANH SÁCH BÀN"
+                       Margin="5,10,0,3"
+                       FontWeight="Bold"
+                       Foreground="#FF00A7C3"></Label>
+                <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                        Content="Trống"
+                        x:Name="btnCheck"
+                        Background="WhiteSmoke"
+                        Foreground="Black"
+                        BorderBrush="Black"
+                        Margin="20 0 0 0"
+                        Click="btnCheck_Click"></Button>
+                <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                        Content="Tất cả"
+                        x:Name="btnShowAll"
+                        Background="WhiteSmoke"
+                        Foreground="Black"
+                        BorderBrush="Black"
+                        Margin="5 0 0 0"
+                        Click="btnShowAll_Click"></Button>
+                <ComboBox materialDesign:HintAssist.Hint="Tầng"
+                          Width="193"
+                          Padding="10 8 20 8"
+                          x:Name="cbbType"
+                          Margin="5,4,195,4"
+                          IsReadOnly="True"
+                          Background="WhiteSmoke"
+                          SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding name_floor}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Background="Gray"
+                        Opacity=".4"></StackPanel>
+            <StackPanel Grid.Row="2">
+                <ScrollViewer VerticalAlignment="Stretch"
+                              HorizontalAlignment="Stretch"
+                              Grid.Row="1"
+                              Height="498"
+                              Background="#fff">
+                    <StackPanel Margin="13 5 0 0">
+                        <StackPanel>
+                            <ItemsControl AlternationCount="9999"
+                                          x:Name="ListViewTables">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:Card Width="150"
+                                                             Height="120"
+                                                             Margin="5">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="60" />
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Image  Height="70"
+                                                        Width="70"
+                                                        Stretch="UniformToFill"
+                                                        Source="/CMS;component/Assets/restaurant_table_70px.png" />
+                                                <StackPanel Grid.Row="1"
+                                                            Margin="5 10 5 0"
+                                                            Orientation="Horizontal">
+                                                    <StackPanel Width="80">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock FontWeight="Bold"
+                                                                       FontSize="10"
+                                                                       Text="Bàn:"
+                                                                       Margin="0 0 5 0"></TextBlock>
+                                                            <TextBlock FontWeight="Bold"
+                                                                       x:Name="txtName"
+                                                                       FontSize="10"
+                                                                       Text="{Binding name_table}" />
+                                                        </StackPanel>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock FontWeight="Bold"
+                                                                       FontSize="10"
+                                                                       Text="TT:"
+                                                                       Margin="0 0 5 0"></TextBlock>
+                                                            <TextBlock FontWeight="Bold"
+                                                                       x:Name="txtStatus"
+                                                                       FontSize="10"
+                                                                       Text="{Binding status}" />
+                                                        </StackPanel>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock FontWeight="Bold"
+                                                                       FontSize="10"
+                                                                       Text="Tầng:"
+                                                                       Margin="0 0 5 0"></TextBlock>
+                                                            <TextBlock FontWeight="Bold"
+                                                                       FontSize="10"
+                                                                       Text="{Binding floor}" />
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <StackPanel Width="60">
+                                                        <Button Background="#FF00A7C3"
+                                                                BorderBrush="Transparent"
+                                                                Content="Chọn"
+                                                                FontSize="12"
+                                                                Height="40"
+                                                                Click="Button_Click"></Button>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Grid>
+                                        </materialDesign:Card>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

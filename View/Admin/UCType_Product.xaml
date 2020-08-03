@@ -1,0 +1,154 @@
+﻿<UserControl x:Class="CMS.View.Admin.UCType_Product"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:CMS.View.Admin"
+             mc:Ignorable="d"
+             Width="774"
+             Height="600"
+             Background="#eee"
+             FontFamily="Microsoft YaHei UI">
+    <StackPanel>
+        <StackPanel VerticalAlignment="Top"
+                    Height="47"
+                    Background="#FF00A7C3">
+            <TextBlock TextAlignment="Center"
+                       Margin="12"
+                       FontFamily="Microsoft JhengHei UI"
+                       Foreground="White"
+                       FontSize="15"><Run Text="LOẠI SẢN PHẨM" /></TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="774">
+            <Grid>
+                <materialDesign:ColorZone
+                    Mode="Standard"
+                    Padding="8 4 8 4"
+                    CornerRadius="2"
+                    Panel.ZIndex="1"
+                    Margin="507,5,-491,-5"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="Auto" />
+                            <ColumnDefinition
+                                Width="*" />
+                            <ColumnDefinition
+                                Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            Grid.Column="1"
+                            Margin="8 0 0 0"
+                            materialDesign:HintAssist.Hint="Nhập loại sản phẩm cần tìm"
+                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                            BorderThickness="0"
+                            MinWidth="200"
+                            VerticalAlignment="Center"
+                            x:Name="txtTim"/>
+                        <Button
+                            Style="{DynamicResource MaterialDesignToolButton}"
+                            Grid.Column="2"
+                            x:Name="btnTim" Click="btnTim_Click">
+                            <materialDesign:PackIcon
+                                Kind="Magnify"
+                                Opacity=".56"
+                                Margin="8 0 0 0" />
+                        </Button>
+                    </Grid>
+                </materialDesign:ColorZone>
+            </Grid>
+        </StackPanel>
+        <StackPanel Margin="10"
+                    Background="White">
+            <materialDesign:Card Height="410">
+                <StackPanel>
+                    <ListView x:Name="lstTP"
+                              Margin="10 10 10 0"
+                              Height="350">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã loại sản phẩm"
+                                                Width="250">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding id_type_product}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Tên loại sản phẩm"
+                                                Width="350">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding name_type_product}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Trạng thái"
+                                                Width="350">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding status}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid Margin="10 0 10 0">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Left">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Background="RoyalBlue"
+                                Height="30"
+                                HorizontalAlignment="Left"
+                                Padding="5" 
+                                Margin="5,5,5,0"
+                                Foreground="White" VerticalAlignment="Top"
+                                Click="btnThemMoi_Click">
+                                <StackPanel Orientation="Horizontal"
+                                        Width="100">
+                                    <Image Source="/CMS;component/Assets/add_64px.png"
+                                        Width="20"
+                                        Height="20"/>
+                                    <TextBlock FontSize="15"
+                                        VerticalAlignment="Center"
+                                        Margin="5 0 0 0"
+                                        FontFamily="Microsoft YaHei UI"><Run Text="Thêm mới"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Background="RoyalBlue"
+                                VerticalAlignment="Center"
+                                Height="30"
+                                HorizontalAlignment="Left"
+                                Padding="5" 
+                                Margin="5"
+                                Foreground="White"
+                                    x:Name="btnSua"
+                                    Click="btnSua_Click">
+                                <StackPanel Orientation="Horizontal"
+                                        Width="55">
+                                    <Image Source="/CMS;component/Assets/update_64px.png"
+                                        Width="20"
+                                        Height="20"/>
+                                    <TextBlock FontSize="15"
+                                        VerticalAlignment="Center"
+                                        Margin="5 0 0 0"
+                                        FontFamily="Microsoft YaHei UI"><Run Text="Sửa"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </materialDesign:Card>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
